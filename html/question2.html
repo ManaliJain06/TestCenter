@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question2</title>
+    <style>
+        .box {
+            margin-right: 200px;
+            margin-left: 200px;
+            margin-top: 100px;
+            box-sizing: border-box;
+            border: 3px solid gray;
+            border-radius: 3%;
+        }
+        .inner-box{
+            background-color: lightgray;
+            text-align: center;
+            height: 40px;
+        }
+        td {
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+        .buttons-next{
+            padding-left: 150px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript"
+        async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML">
+    function cancel(){
+        localStorage.clear();
+        window.location.assign("http://localhost:63342/TestCenter/html/login.html");
+    }
+
+    function calculateOption2(){
+        var radios = document.getElementsByName('question2');
+        console.log(radios);
+        for(var i = 0; i < radios.length; i++){
+            if(radios[i].checked)
+            {
+                var x = radios[i].getAttribute("data-q2");
+                x = parseInt(x);
+            }
+        }
+        if(x === null || x === undefined){
+            alert("please select an option");
+            return false;
+        } else{
+            var score = parseInt(localStorage.getItem("quantMarks"));
+            localStorage.setItem("quantMarks",score+x);
+            window.location.assign("question3.html");
+        }
+
+    }
+
+</script>
+<div>
+    <div id = "container">
+        <div class="box">
+            <div class="inner-box">
+                Question 1
+            </div>
+            <table align="center">
+                <br>
+                <tr>
+                    <td colspan="3"><span>Select cosine theorem formula</span></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="question2" value="option1" data-q2 = "50">
+                        <math>
+                            <mrow>
+                                <mi>cos</mi><mo>(</mo><mi>&alpha;</mi><mo>&plusmn;</mo><mi>&beta;</mi><mo>)</mo>
+                                <mo>=</mo>
+                                <mi>cos</mi><mi>&alpha;</mi><mi>cos</mi><mi>&beta;</mi><mo>&mnplus;</mo>
+                                <mi>sin</mi><mi>&alpha;</mi><mi>sin</mi><mi>&beta;</mi>
+                            </mrow>
+                        </math>
+                    </td>
+                    <td></td>
+                    <td><input type="radio" name="question2" value="option2" data-q2 = "0">
+                        <math>
+                            <mrow>
+                                <mi>sin</mi><mo>(</mo><mi>&alpha;</mi><mo>&plusmn;</mo><mi>&beta;</mi><mo>)</mo>
+                                <mo>=</mo>
+                                <mi>sin</mi><mi>&alpha;</mi><mi>cos</mi><mi>&beta;</mi><mo>&mnplus;</mo>
+                                <mi>cos</mi><mi>&alpha;</mi><mi>sin</mi><mi>&beta;</mi>
+                            </mrow>
+                        </math>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="question2" value="option3" data-q2 = "0">
+                        <math>
+                            <mrow>
+                                <mi>sin</mi><mi>&alpha;</mi><mo>+</mo><mi>sin</mi><mi>&beta;</mi>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mi>2</mi><mi>sin</mi><mo>(</mo>
+                                    <mfrac><mrow><mi>&alpha;</mi><mo>+</mo><mi>&beta;</mi></mrow>
+                                        <mrow><mi>2</mi><mi></mi></mrow>
+                                    </mfrac>
+                                    <mo>)</mo><mi>cos</mi><mo>(</mo>
+                                    <mfrac><mrow><mi>&alpha;</mi><mo>-</mo><mi>&beta;</mi></mrow>
+                                        <mrow><mi>2</mi></mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </math>
+                    </td>
+                    <td></td>
+                    <td><input type="radio" name="question2" value="option4" data-q2 = "0">
+                        <math>
+                            <mrow>
+                                <mi>sin</mi><mi>&alpha;</mi><mo>-</mo><mi>sin</mi><mi>&beta;</mi>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mi>2</mi><mi>cos</mi><mo>(</mo>
+                                    <mfrac><mrow><mi>&alpha;</mi><mo>+</mo><mi>&beta;</mi></mrow>
+                                        <mrow><mi>2</mi><mi></mi></mrow>
+                                    </mfrac>
+                                    <mo>)</mo><mi>sin</mi><mo>(</mo>
+                                    <mfrac><mrow><mi>&alpha;</mi><mo>-</mo><mi>&beta;</mi></mrow>
+                                        <mrow><mi>2</mi></mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </math>
+                    </td>
+                </tr>
+            </table>
+            <div class="buttons-next">
+                <Button type="button" onclick="calculateOption2();">Submit & Next Question</Button>
+                <Button type="button" onclick="cancel();">Cancel & Clear Selection</Button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

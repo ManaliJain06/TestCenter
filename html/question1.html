@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question1</title>
+    <style>
+        .box {
+            margin-right: 200px;
+            margin-left: 200px;
+            margin-top: 100px;
+            box-sizing: border-box;
+            border: 3px solid gray;
+            border-radius: 3%;
+        }
+        .inner-box{
+            background-color: lightgray;
+            text-align: center;
+            height: 40px;
+        }
+        td {
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+        .buttons-next{
+            padding-left: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript"
+    async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML">
+    function cancel(){
+        localStorage.clear();
+        window.location.assign("http://localhost:63342/TestCenter/html/login.html");
+    }
+
+    function calculateOption1(){
+        var radios = document.getElementsByName('question1');
+        console.log(radios);
+        for(var i = 0; i < radios.length; i++){
+            if(radios[i].checked)
+            {
+                var x = radios[i].getAttribute("data-q1");
+                console.log(x);
+            }
+        }
+        if(x === null || x === undefined){
+            alert("please select an option");
+            return false;
+        } else{
+            localStorage.setItem("quantMarks",x);
+            window.location.assign("http://localhost:63342/TestCenter/html/question2.html");
+        }
+    }
+</script>
+<div>
+    <div id = "container">
+        <div class="box">
+            <div class="inner-box">
+                Question 1
+            </div>
+                <table align="center">
+                    <br>
+                    <tr>
+                        <td colspan="2"><span>Given points (x1,y1) and (x2,y2) select the formula to
+                            find equation of a given line</span></td>
+                        <td rowspan="3"><img src="Line_Diagram_ManaliJain.png" width="350" height="400"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="question1" value="option1" data-q1 = "0">
+                            <math><mrow><mi>y</mi><mo>=</mo>
+                                    <mrow><mi>m</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow></mrow>
+                            </math>
+                        </td>
+                        <td><input type="radio" name="question1" value="option2" data-q1 = "0">
+                            <math>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo><mrow><mi>x</mi><mo>-</mo><mi>h</mi></mrow><mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo><mrow><mi>y</mi><mo>-</mo><mi>k</mi></mrow><mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>=</mo>
+                                    <msup>
+                                        <mi>r</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                            </math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="question1" value="option3" data-q1 = "0">
+                            <math>
+                                <mrow>
+                                    <mi>y</mi><mo>-</mo><mi>y</mi><mi>1</mi><mo>=</mo>
+                                    <mrow>
+                                       <mi>m</mi><mrow><mi>(</mi><mi>x</mi><mo>-</mo><mi>x</mi><mi>1</mi><mi>)</mi></mrow>
+                                    </mrow>
+                                </mrow>
+                            </math>
+                        </td>
+                        <td><input type="radio" name="question1" value="option4" data-q1 = "50">
+                            <math>
+                                <mrow>
+                                    <mi>y</mi><mo>-</mo><mi>y</mi><mi>2</mi><mo>=</mo>
+                                    <mrow>
+                                        <mfrac><mrow><mi>y</mi><mi>2</mi><mo>-</mo><mi>y</mi><mi>1</mi></mrow>
+                                            <mrow><mi>x</mi><mi>2</mi><mo>-</mo><mi>x</mi><mi>1</mi></mrow></mfrac>
+                                        <mrow><mi>(</mi><mi>x</mi><mo>-</mo><mi>x</mi><mi>2</mi><mi>)</mi></mrow>
+                                    </mrow>
+                                </mrow>
+                            </math>
+                        </td>
+                    </tr>
+                </table>
+                <div class="buttons-next">
+                    <Button type="button" onclick="calculateOption1();">Submit & Next Question</Button>
+                    <Button type="button" onclick="cancel();">Cancel & Clear Selection</Button>
+                </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

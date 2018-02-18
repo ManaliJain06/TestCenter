@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Survey</title>
+            <style>
+                .box {
+                    margin-right: 200px;
+                    margin-left: 200px;
+                    margin-top: 100px;
+                    box-sizing: border-box;
+                    border: 3px solid gray;
+                    border-radius: 3%;
+                }
+                .inner-box{
+                    background-color: lightgray;
+                    text-align: center;
+                    height: 40px;
+                }
+                td {
+                    padding-top: .5em;
+                    padding-bottom: .5em;
+                }
+                .buttons-next{
+                    padding-left: 200px;
+                    padding-bottom: 20px;
+                }
+            </style>
+        </head>
+<body>
+<script type="text/javascript"
+        async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML">
+
+    function submit(){
+        window.location.assign("http://localhost:63342/TestCenter/html/result.html");
+    }
+
+</script>
+<div>
+    <div id = "container">
+        <div class="box">
+            <div class="inner-box">
+                Survey
+            </div>
+            <table align="center">
+                <br>
+                <tr>
+                    <td colspan="2"><span><b>How do you like the center?</b></span></td>
+                </tr>
+                <tr>
+                    <td>Comments: <textarea rows="4" cols="50" name="comments"></textarea></td>
+                </tr>
+                <tr>
+                    <td><span><b>Select text Area Location</b></span></td>
+                </tr>
+                <tr>
+                    <td>City:
+                        <input list="city">
+                        <datalist id="city">
+                            <option value="San Jose">
+                            <option value="San Francisco">
+                            <option value="Mountain View">
+                            <option value="Palo Alto">
+                        </datalist>
+                     &nbsp &nbsp Room Number#:
+                        <input list="room">
+                        <datalist id="room">
+                            <option value="Room 337">
+                            <option value="Room 210">
+                            <option value="Room 110">
+                            <option value="Room 410">
+                        </datalist>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div class="buttons-next">
+                <Button type="button" onclick="submit();">Submit & Get Score</Button>
+                <Button type="button" onclick="submit();">Skip & Get Score</Button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

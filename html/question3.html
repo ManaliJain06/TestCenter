@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question3</title>
+    <style>
+        .box {
+            margin-right: 200px;
+            margin-left: 200px;
+            margin-top: 100px;
+            box-sizing: border-box;
+            border: 3px solid gray;
+            border-radius: 3%;
+        }
+        .inner-box{
+            background-color: lightgray;
+            text-align: center;
+            height: 40px;
+        }
+        td {
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+        .buttons-next{
+            padding-left: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript"
+        async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML">
+
+    function radioOptions(e){
+        console.log(e);
+        var y = e.value;
+        var values = y.split(" ");
+        document.getElementById("blank1").innerHTML = "<span style='color: blue;'>" + values[0] + "</span>";
+        document.getElementById("blank2").innerHTML = "<span style='color: blue;'>" + values[1] + "</span>";
+    }
+
+    function cancel(){
+        localStorage.clear();
+        window.location.assign("http://localhost:63342/TestCenter/html/login.html");
+    }
+
+    function calculateOption3(){
+        var radios = document.getElementsByName('question3');
+        console.log(radios);
+        for(var i = 0; i < radios.length; i++){
+            if(radios[i].checked)
+            {
+                var x = radios[i].getAttribute("data-q3");
+                console.log(x);
+            }
+        }
+        if(x === null || x === undefined){
+            alert("please select an option");
+            return false;
+        } else{
+            localStorage.setItem("readingMarks",x);
+            window.location.assign("http://localhost:63342/TestCenter/html/question4.html");
+        }
+    }
+</script>
+<div>
+    <div id = "container">
+        <div class="box">
+            <div class="inner-box">
+                Question 3
+            </div>
+            <table align="center">
+                <col width="500">
+                <col width="50">
+                <br>
+                <tr>
+                    <td><span>As per the latest twitter news, complete the article snippet
+                    given by selecting appropriate choices for the blanks.</span></td>
+                    <td></td>
+                    <td rowspan="4">Twitter wants more cash. The company announced two $ <span id="blank1">________</span>
+                    million debits offering in the filing today, each with a potential $100 increase provided that the sales are
+                    oversubscribed. Assuming the full tip, including the $100 million boosters, <span id="blank2">________</span>
+                    will raise upto $1.5 billion with the two offerings.
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="question3" onclick="radioOptions(this);" value="650 Twitter" data-q3 = "50">
+                        Option 1 Mark 1: $650 &nbsp &nbsp &nbsp Option 1 Mark 2: Twitter
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="question3" onclick="radioOptions(this);" value="550 Google" data-q3 = "0">
+                        Option 2 Mark 1: $550 &nbsp &nbsp &nbsp Option 1 Mark 2: Google
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="question3" onclick="radioOptions(this);" value="650 Facebook" data-q3 = "0">
+                        Option 3 Mark 1: $650 &nbsp &nbsp &nbsp Option 1 Mark 2: Facebook
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div class="buttons-next">
+                <Button type="button" onclick="calculateOption3();">Submit & Next Question</Button>
+                <Button type="button" onclick="cancel();">Cancel & Clear Selection</Button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

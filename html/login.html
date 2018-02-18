@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        .box {
+            margin-right: 200px;
+            margin-left: 200px;
+            margin-top: 100px;
+            box-sizing: border-box;
+            border: 3px solid gray;
+            border-radius: 3%;
+        }
+        .inner-box{
+            background-color: lightgray;
+            text-align: center;
+            height: 40px;
+        }
+        td {
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id = "container">
+    <div class="box">
+        <div class="inner-box">
+            User Login
+        </div>
+            <table align="center">
+                <br>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" id="username" autofocus required></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" id="password" maxlength= 14 required></td>
+                </tr>
+                <tr>
+                    <td><a href="">Create Account/Forget</a></td>
+                    <td align="center"><Button type="button" onclick="loginUser();">Login</Button></td>
+                </tr>
+            </table>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function loginUser(){
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if(username === "s" && password === "s"){
+            localStorage.clear();
+            window.location.assign("http://localhost:63342/TestCenter/html/question1.html");
+        }
+    }
+</script>
+</body>
+</html>

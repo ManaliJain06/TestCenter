@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScoreData</title>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Score Card</title>
+            <style>
+                .box {
+                    margin-right: 200px;
+                    margin-left: 200px;
+                    margin-top: 100px;
+                    box-sizing: border-box;
+                    border: 3px solid gray;
+                    border-radius: 3%;
+                }
+                .inner-box{
+                    background-color: lightgray;
+                    text-align: center;
+                    height: 40px;
+                }
+                td {
+                    padding-top: .5em;
+                    padding-bottom: .5em;
+                }
+                .buttons-next{
+                    padding-left: 200px;
+                    padding-bottom: 20px;
+                }
+                .resultAccordian {
+                    background-color: lightblue;
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: left;
+                    font-size: 15px;
+                }
+
+                .active, .accordion:hover {
+                    background-color: lightblue;
+                }
+                .panel {
+                    overflow: hidden;
+                }
+
+</style>
+        </head>
+<body>
+<script type="text/javascript"
+        async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML">
+
+    function finish(){
+        localStorage.clear();
+        window.location.assign("http://localhost:63342/TestCenter/html/login.html");
+    }
+
+    var quant  = localStorage.getItem("quantMarks");
+    console.log("quantMarksare",quant);
+    var reading = localStorage.getItem("readingMarks");
+    var video = localStorage.getItem("videoMarks");
+    document.getElementById("quantMark").innerHTML = quant;
+    document.getElementById("readingMark").innerHTML = reading;
+    document.getElementById("audioMark").innerHTML = video;
+
+    if(quant === "100"){
+        document.getElementById("quantQues").innerHTML = "2";
+    } else if(quant === "50"){
+        document.getElementById("quantQues").innerHTML = "1";
+    } else{
+        document.getElementById("quantQues").innerHTML = "0";
+    }
+
+    if(reading === "50"){
+        document.getElementById("resultQues").innerHTML = "1";
+    } else{
+        document.getElementById("resultQues").innerHTML = "0";
+    }
+
+    if(video === "50"){
+        document.getElementById("audioQues").innerHTML = "1";
+    } else{
+        document.getElementById("audioQues").innerHTML = "0";
+    }
+
+</script>
+<div>
+    <div id = "container">
+        <div class="box">
+            <div class="inner-box">
+                Score Card
+            </div>
+            <button class="resultAccordian">Quantitative Section</button>
+            <div class="panel">
+                <br>
+                Number of Questions Answered: 2
+                <br>
+                Number of Correct Answers:<span id="quantQues"></span>
+                <br>
+                Score:<span id="quantMark"></span>
+            </div>
+
+            <button class="resultAccordian">Reading Section</button>
+            <div class="panel">
+                <br>
+                Number of Questions Answered: 1
+                <br>
+                Number of Correct Answers:<span id="resultQues"></span>
+                <br>
+                Score:<span id="readingMark"></span>
+                <br>
+            </div>
+
+            <button class="resultAccordian">Audio/Video Section</button>
+            <div class="panel">
+                <br>
+                Number of Questions Answered: 1
+                <br>
+                Number of Correct Answers:<span id="audioQues"></span>
+                <br>
+                Score:<span id="audioMark"></span>
+            </div>
+            <br>
+            <div class="buttons-next">
+                <Button type="button" onclick="finish();">Finish</Button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var a = document.getElementsByClassName("resultAccordian");
+    for (var i = 0; i < a.length; i++) {
+        a[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var box = this.nextElementSibling;
+            if (box.style.display === "block") {
+                box.style.display = "none";
+            } else {
+                box.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</html>
